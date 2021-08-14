@@ -6,3 +6,12 @@ Integrantes:
 -Darinka Townsend
 -Tommy Beltrán
 -Raúl Villao
+
+## Project setup
+```
+npm install
+```
+## Run project 
+```
+npm run devstart
+```
