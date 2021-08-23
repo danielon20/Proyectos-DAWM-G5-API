@@ -1,9 +1,9 @@
 {
   "development": {
-    "username": "uigkeamqwlkx4fsq",
-    "password": "Oe30KEvj56PVbaA30UoV",
-    "database": "b4wmdxugipkoazwq1lm8",
-    "host": "b4wmdxugipkoazwq1lm8-mysql.services.clever-cloud.com",
+    "username": "root",
+    "password": "10203040",
+    "database": "webgit",
+    "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
