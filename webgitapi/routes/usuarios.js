@@ -10,6 +10,8 @@ router.get('/', [auth,checkRole(['Administrador','Usuario'])],usuariosController
 /* GET by ID home page. */
 //Para realizar esta accion solo necesitas tener un token
 router.get('/:id', auth ,usuariosController.show);
+//Busqueda por usuario
+router.get('/uname/:user',usuariosController.getUser);
 /* POST */
 router.post('/',  usuariosController.create);
 
