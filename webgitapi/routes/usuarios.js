@@ -12,6 +12,8 @@ router.get('/', [auth,checkRole(['Administrador','Usuario'])],usuariosController
 router.get('/:id', auth ,usuariosController.show);
 //Para obtener usuarios solo con el rol 'Usuario'
 router.get('/rol/user',usuariosController.show_only_users);
+//Busqueda por usuario
+router.get('/uname/:user',usuariosController.getUser);
 /* POST */
 router.post('/',  usuariosController.create);
 

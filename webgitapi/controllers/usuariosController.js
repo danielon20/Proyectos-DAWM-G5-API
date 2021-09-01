@@ -26,6 +26,36 @@ module.exports = {
             error: err
           }))
     },
+    /**
+     * usuariosController.getUser()
+     */
+
+     getUser: function (req, res) {
+        var id1 = req.params.user;
+
+        models.usuarios.findOne({ 
+            where: {
+              usuario: id1
+            },
+            attributes: { exclude: ["updatedAt"] }   
+          })
+          .then(usuario => {
+            if (!usuario) {
+                //No es necesario el return alado del res. ...//
+                res.status(404).json({
+                    message: 'Usuario no encontrado'
+                });
+            }
+            else{
+                res.send(usuario)
+            }
+          })
+          .catch(err => res.status(500).json({
+            message: 'Error when getting usuarios.',
+            error: err
+          }))
+    },
+
 
     /**
      * usuariosController.show()
