@@ -56,6 +56,22 @@ module.exports = {
           }))
     },
 
+    show_only_users: function (req, res) {
+        models.usuarios.findAll({ 
+            where: {
+              tipo: 'Usuario'
+            },
+            attributes: { exclude: ["updatedAt"] }   
+          })
+          .then(usuarios_rol_user => {
+            res.send(usuarios_rol_user)
+          })
+          .catch(err => res.status(500).json({
+            message: 'Error when getting usuarios.',
+            error: err
+          }))
+    },
+
     /**
      * usuariosController.create()
      */

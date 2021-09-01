@@ -5,14 +5,34 @@ const path = require('path');
 const Sequelize = require('sequelize');
 const basename = path.basename(__filename);
 const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.json')[env];
+const config_bd = require(__dirname + '/../config/config.json')[env];
 const db = {};
 
+const nodbConfig = require("../config/nodb.config.js");
+const mongoose = require('mongoose');
+
+const db_path = nodbConfig.dialect + '://' + nodbConfig.HOST + '/' + nodbConfig.noDB;
+const config = {
+    useNewUrlParser: true,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
+    poolSize: 4
+}
+
+
+mongoose.connect(db_path, config)
+  .then(() => console.log('DB connnection successful!'))
+  .catch(err => {
+    console.error.bind(console, 'MongoDB connection error:')
+  });
+
+
 let sequelize;
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable], config);
+if (config_bd.use_env_variable) {
+  sequelize = new Sequelize(process.env[config_bd.use_env_variable], config_bd);
 } else {
-  sequelize = new Sequelize(config.database, config.username, config.password, config);
+  sequelize = new Sequelize(config_bd.database, config_bd.username, config_bd.password, config_bd);
 }
 
 fs
