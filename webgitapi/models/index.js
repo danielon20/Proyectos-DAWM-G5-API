@@ -10,8 +10,9 @@ const db = {};
 
 const nodbConfig = require("../config/nodb.config.js");
 const mongoose = require('mongoose');
-
-const db_path = nodbConfig.dialect + '://' + nodbConfig.HOST + '/' + nodbConfig.noDB;
+const db_path= nodbConfig.dialect + '+srv://' + nodbConfig.USER + ':' + nodbConfig.PASSWORD + nodbConfig.HOST +'/' + nodbConfig.noDB + '?retryWrites=true&w=majority';
+//const db_path = 'mongodb+srv://danielon2000:1234@cluster0.4amyl.mongodb.net/webgit_nosql?retryWrites=true&w=majority';
+//const db_path = nodbConfig.dialect + '://' + nodbConfig.HOST + '/' + nodbConfig.noDB;
 const config = {
     useNewUrlParser: true,
     useCreateIndex: true,

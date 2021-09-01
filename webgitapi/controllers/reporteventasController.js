@@ -18,7 +18,7 @@ module.exports = {
                     error: err
                 });
             }
-
+            //console.log(reporteventass);
             return res.json(reporteventass);
         });
     },

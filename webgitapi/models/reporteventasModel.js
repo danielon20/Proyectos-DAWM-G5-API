@@ -10,3 +10,4 @@ var reporteventasSchema = new Schema({
 });
 
 module.exports = mongoose.model('reporteventas', reporteventasSchema);
+								 
