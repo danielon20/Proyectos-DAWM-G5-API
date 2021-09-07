@@ -1,23 +1,17 @@
 var express = require('express');
 var router = express.Router();
-var registroCursosController = require('../controllers/registroCursosController.js');
+var cursosController = require('../controllers/cursoController.js');
 
 /*
  * GET
  */
-router.get('/', registroCursosController.list);
-
-/*
- * GET
- */
-
-router.get('/:id', registroCursosController.getUser);
+router.get('/', cursosController.list);
 
 /*
  * GET
  */
 
-router.get('/cursos/:idCurso', registroCursosController.getUsersCurso);
+router.get('/:id', cursosController.getCurso);
 
 /*
  * GET

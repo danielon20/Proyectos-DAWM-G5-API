@@ -58,6 +58,34 @@ module.exports = {
     },
 
 
+    getUsersCurso: function (req, res) {
+        var id1 = req.params.idCurso;
+
+        models.registro_curso.findAll({ 
+            where: {
+              id_curso: id1
+            },
+            attributes: { exclude: ["updatedAt"] }   
+          })
+          .then(usuario => {
+            if (!usuario) {
+                //No es necesario el return alado del res. ...//
+                res.status(404).json({
+                    message: 'Usuario no encontrado'
+                });
+            }
+            else{
+                //console.log(usuario)
+                res.send(usuario)
+            }
+          })
+          .catch(err => res.status(500).json({
+            message: 'Error when getting usuarios.',
+            error: err
+          }))
+    },
+
+
     /**
      * usuariosController.show()
      */

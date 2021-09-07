@@ -10,6 +10,7 @@ var usersRouter = require('./routes/users');
 var usuariosRouter = require('./routes/usuarios');
 var authRouter = require('./routes/auth');
 var reporteventasRoutes = require('./routes/reporteventasRoutes');
+var cursosRoutes = require('./routes/cursos');
 
 var app = express();
 const nodb = require("./models");
@@ -27,5 +28,6 @@ app.use('/usuarios', usuariosRouter);
 app.use('/auth', authRouter);
 app.use('/reportes', reporteventasRoutes);
 app.use('/registro_curso', registroCursoRouter);
+app.use('/cursos', cursosRoutes);
 
 module.exports = app;
