@@ -5,6 +5,7 @@ var logger = require('morgan');
 var cors = require('cors');
 
 var indexRouter = require('./routes/index');
+var registroCursoRouter = require('./routes/registro_cursos');
 var usersRouter = require('./routes/users');
 var usuariosRouter = require('./routes/usuarios');
 var authRouter = require('./routes/auth');
@@ -25,5 +26,6 @@ app.use('/users', usersRouter);
 app.use('/usuarios', usuariosRouter);
 app.use('/auth', authRouter);
 app.use('/reportes', reporteventasRoutes);
+app.use('/registro_curso', registroCursoRouter);
 
 module.exports = app;
