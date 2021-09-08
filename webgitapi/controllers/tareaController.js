@@ -56,6 +56,31 @@ module.exports = {
           }))
     },
 
+    getTareasByCourse: function (req, res) {
+      var id1 = req.params.idCurso;
+
+      models.tarea.findAll({ 
+          where: {
+            id_curso: id1
+          },
+          attributes: { exclude: ["updatedAt"] }   
+        })
+        .then(tareas => {
+          if (!tareas) {
+              res.status(404).json({
+                  message: 'Tareas por curso no encontradas'
+              });
+          }
+          else{
+              res.send(tareas)
+          }
+        })
+        .catch(err => res.status(500).json({
+          message: 'Error when getting tareas.',
+          error: err
+        }))
+  },
+
 
 
     /**
