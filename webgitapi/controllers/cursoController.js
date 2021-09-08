@@ -32,8 +32,7 @@ module.exports = {
 
      getCurso: function (req, res) {
         var id1 = req.params.id;
-
-        models.usuarios.findOne({ 
+        models.curso.findOne({ 
             where: {
               id: id1
             },
