@@ -11,6 +11,7 @@ var usuariosRouter = require('./routes/usuarios');
 var authRouter = require('./routes/auth');
 var reporteventasRoutes = require('./routes/reporteventasRoutes');
 var cursosRoutes = require('./routes/cursos');
+var tareasRoutes = require('./routes/tarea');
 
 var app = express();
 const nodb = require("./models");
@@ -29,5 +30,6 @@ app.use('/auth', authRouter);
 app.use('/reportes', reporteventasRoutes);
 app.use('/registro_curso', registroCursoRouter);
 app.use('/cursos', cursosRoutes);
+app.use('/tareas', tareasRoutes);
 
 module.exports = app;

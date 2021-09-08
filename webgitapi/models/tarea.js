@@ -19,8 +19,20 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(60),
       allowNull: true
     },
+    subtitulo: {
+      type: DataTypes.STRING(60),
+      allowNull: true
+    },
     descripcion: {
       type: DataTypes.STRING(120),
+      allowNull: true
+    },
+    linkForms: {
+      type: DataTypes.STRING(200),
+      allowNull: true
+    },
+    linkVideo: {
+      type: DataTypes.STRING(200),
       allowNull: true
     }
   }, {

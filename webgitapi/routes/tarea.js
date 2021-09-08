@@ -1,22 +1,22 @@
 var express = require('express');
 var router = express.Router();
-var cursosController = require('../controllers/cursoController.js');
+var tareaController = require('../controllers/tareaController.js');
 
 /*
  * GET
  */
-router.get('/', cursosController.list);
+router.get('/', tareaController.list);
 
 /*
  * GET
  */
 
-router.get('/:id', cursosController.getCurso);
+router.get('/:id', tareaController.getTarea);
 
 /*
  * POST
  */
-router.post('/', cursosController.crear);
+router.post('/', tareaController.crear);
 
 /*
  * PUT

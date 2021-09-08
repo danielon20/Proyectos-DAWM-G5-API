@@ -15,7 +15,7 @@ module.exports = {
      * usuariosController.list()
      */
     list: function (req, res) {
-        models.curso.findAll({ 
+        models.tarea.findAll({ 
             attributes: { exclude: ["updatedAt"] }
           })
           .then(usuarios => {
@@ -30,10 +30,10 @@ module.exports = {
      * usuariosController.getUser()
      */
 
-     getCurso: function (req, res) {
+     getTarea: function (req, res) {
         var id1 = req.params.id;
 
-        models.usuarios.findOne({ 
+        models.tarea.findOne({ 
             where: {
               id: id1
             },
@@ -57,68 +57,48 @@ module.exports = {
     },
 
 
-    /**
-     * usuariosController.show()
-     */
-    show: function (req, res) {
-        var id1 = req.params.id;
-
-        models.usuarios.findOne({ 
-            where: {
-              id: id1
-            },
-            attributes: { exclude: ["updatedAt"] }   
-          })
-          .then(usuario => {
-            if (!usuario) {
-                //No es necesario el return alado del res. ...//
-                res.status(404).json({
-                    message: 'Usuario no encontrado'
-                });
-            }
-            else{
-                res.send(usuario)
-            }
-          })
-          .catch(err => res.status(500).json({
-            message: 'Error when getting usuarios.',
-            error: err
-          }))
-    },
-
-    show_only_users: function (req, res) {
-        models.usuarios.findAll({ 
-            where: {
-              tipo: 'Usuario'
-            },
-            attributes: { exclude: ["updatedAt"] }   
-          })
-          .then(usuarios_rol_user => {
-            res.send(usuarios_rol_user)
-          })
-          .catch(err => res.status(500).json({
-            message: 'Error when getting usuarios.',
-            error: err
-          }))
-    },
 
     /**
      * 
      */
      crear: function (req, res) {
-        let name = req.body.nombre;
-        let des = req.body.descripcion;
-        let pre = req.body.precio;
-        models.curso.create({
-            nombre: name, precio :pre, descripcion:des
-        })  
-        .then(()=>{          
-          res.send("curso guardado")
+        let ttle = req.body.titulo;
+        let sub = req.body.subt;
+        let desc = req.body.descripcion;
+        let lf=req.body.linkf;
+        let lv=req.body.linkv;
+        models.curso.findAll({ 
+            attributes: { exclude: ["updatedAt"] }
+        })
+        .then(cursos => {
+            var mayor=0;
+            var cur="";
+            cursos.forEach(c => {
+                if(c.id>mayor) {
+                    mayor=c.id;
+                    cur=c;
+                }
+            });
+            var idCur= cur.id;
+            console.log(idCur);
+            models.tarea.create({
+                id_curso: idCur, titulo:ttle, subtitulo:sub, descripcion:desc, linkForms:lf, linkVideo:lv
+            })  
+            .then(()=>{          
+                res.send("tarea guardada")
+            })
+            .catch(err => {
+                console.log(err);
+                res.status(500).json({
+                    message: 'Error when create curso.',
+                    error: err            
+                })          
+            })
         })
         .catch(err => {
           console.log(err);
           res.status(500).json({
-            message: 'Error when create curso.',
+            message: 'Error when al obtener los cursos.',
             error: err            
           })          
         })
