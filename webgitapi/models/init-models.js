@@ -1,5 +1,6 @@
 var DataTypes = require("sequelize").DataTypes;
 var _curso = require("./curso");
+var _contactos = require("./contactos");
 var _detalle_servicio = require("./detalle_servicio");
 var _foto = require("./foto");
 var _noticia = require("./noticia");
@@ -25,6 +26,7 @@ function initModels(sequelize) {
   var tipo_servicio = _tipo_servicio(sequelize, DataTypes);
   var usuarios = _usuarios(sequelize, DataTypes);
   var video = _video(sequelize, DataTypes);
+  var contactos=_contactos(sequelize, DataTypes);
 
   curso.belongsToMany(usuarios, { as: 'id_usuario_usuarios', through: registro_curso, foreignKey: "id_curso", otherKey: "id_usuario" });
   servicio.belongsToMany(usuarios, { as: 'id_usuario_usuarios_servicio_contratados', through: servicio_contratado, foreignKey: "id_servicio", otherKey: "id_usuario" });
@@ -68,6 +70,7 @@ function initModels(sequelize) {
     tipo_servicio,
     usuarios,
     video,
+    contactos,
   };
 }
 module.exports = initModels;
