@@ -151,6 +151,24 @@ module.exports = {
           }))
     },
 
+    borrar: function (req, res) {
+        var id1 = req.params.userId;
+        var id2 = req.params.courseId
+        models.registro_curso.destroy({
+            where: {
+                id_usuario: id1,
+                id_curso: id2
+              }
+        })  
+        .then(()=>{
+            res.json({message : 'Registro/s borrado con exito'});
+        })
+        .catch(err => res.status(500).json({
+            message: 'Error when delete registrer.',
+            error: err
+          }))
+    }
+
 
 
     /**

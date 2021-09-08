@@ -14,6 +14,13 @@ router.get('/', tareaController.list);
 router.get('/:id', tareaController.getTarea);
 
 /*
+ * GET
+ */
+
+router.get('/curso/:idCurso', tareaController.getTareasByCourse);
+
+
+/*
  * POST
  */
 router.post('/', tareaController.crear);

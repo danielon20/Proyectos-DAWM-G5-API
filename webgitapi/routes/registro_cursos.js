@@ -37,6 +37,6 @@ router.get('/cursos/:idCurso', registroCursosController.getUsersCurso);
 /*
  * DELETE
  */
-//router.delete('/:id', reporteventasController.remove);
+router.delete('/user/:userId/course/:courseId', registroCursosController.borrar);
 
 module.exports = router;
