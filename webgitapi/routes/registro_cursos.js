@@ -27,7 +27,7 @@ router.get('/cursos/:idCurso', registroCursosController.getUsersCurso);
 /*
  * POST
  */
-//router.post('/', reporteventasController.create);
+router.post('/', registroCursosController.create);
 
 /*
  * PUT

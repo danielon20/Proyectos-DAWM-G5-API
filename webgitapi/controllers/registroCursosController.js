@@ -135,20 +135,23 @@ module.exports = {
      * usuariosController.create()
      */
      create: function (req, res) {
-        let email = req.body.correo;
-        let username = req.body.usuario;
-        let password = req.body.contrasena;
-        models.usuarios.create({
-            nombres: 'Jhon Dena', apellidos : 'Dargas Dargas', correo: email, usuario:username, contra: password, tipo:'Usuario'
+        let curso = req.body.id_curso;
+        let usuario = req.body.id_usuario;
+        let fecha = req.body.fecha_registro;
+        let calificacion = req.body.calificacion;
+        models.registro_curso.create({
+            id_usuario: usuario, id_curso: curso, fecha_registro: fecha, calificacion: calificacion
         })  
-        //res.json({message : 'Orden guardada'})
-        .then(()=>{
-            res.json({message : 'Cliente guardado con exito!'});
+        .then(()=>{          
+          res.send("Registro con  éxito")
         })
-        .catch(err => res.status(500).json({
-            message: 'Error when create user.',
-            error: err
-          }))
+        .catch(err => {
+          console.log(err);
+          res.status(500).json({
+            message: 'Error when registro curso',
+            error: err            
+          })          
+        })
     },
 
 
