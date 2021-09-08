@@ -32,7 +32,7 @@ router.post('/', registroCursosController.create);
 /*
  * PUT
  */
-//router.put('/:id', reporteventasController.update);
+router.put('/user/:userId/course/:courseId', registroCursosController.actualizarNota);
 
 /*
  * DELETE
