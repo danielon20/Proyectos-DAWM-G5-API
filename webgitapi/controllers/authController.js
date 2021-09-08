@@ -43,7 +43,7 @@ module.exports = {
                     }
                   );
                   //const token2 = jwt.verify(token, config.TOKEN_SECRET);
-                  res.json({ message: 'OK', token, username: usuario1.usuario, role: usuario1.tipo });
+                  res.json({ message: 'OK', token, username: usuario1.usuario, role: usuario1.tipo, id: usuario1.id });
             }
         })
         .catch(err => res.status(500).json({
