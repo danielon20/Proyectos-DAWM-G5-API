@@ -16,6 +16,8 @@ router.get('/rol/user',usuariosController.show_only_users);
 router.get('/uname/:user',usuariosController.getUser);
 /* POST */
 router.post('/',  usuariosController.create);
+/* PUT */
+router.put('/:id',usuariosController.changePassword);
 
 
 

@@ -128,6 +128,26 @@ module.exports = {
         })
     },
 
+    changePassword: function (req, res) {
+        let password = req.body.contrasena;
+        var id1 = req.params.id;
+        models.usuarios.update({ contra: password }, {
+            where: {
+              id: id1
+            }
+          })  
+        .then(()=>{
+            res.json({message : 'Contrasena cambiada con exito!'});
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                message: 'Error when update password.',
+                error: err
+            })
+        })
+    }
+
 
 
     /**
