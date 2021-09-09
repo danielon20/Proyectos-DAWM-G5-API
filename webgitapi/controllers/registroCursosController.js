@@ -170,7 +170,29 @@ module.exports = {
             message: 'Error when delete registrer.',
             error: err
           }))
-    }
+    },
+
+    actualizarNota: function (req, res) {
+      var id1 = req.params.userId;
+      var id2 = req.params.courseId;
+      let nota = req.body.puntaje;
+      models.registro_curso.update({calificacion: nota},{
+          where: {
+              id_usuario: id1,
+              id_curso: id2
+            }
+      })  
+      .then(()=>{
+          res.json({message : 'Calificacion actualizada con exito'});
+      })
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
+          message: 'Error when update score.',
+          error: err
+        })
+      })
+  }
 
 
 
