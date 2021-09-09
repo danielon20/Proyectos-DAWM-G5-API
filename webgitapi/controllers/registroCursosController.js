@@ -185,10 +185,13 @@ module.exports = {
       .then(()=>{
           res.json({message : 'Calificacion actualizada con exito'});
       })
-      .catch(err => res.status(500).json({
+      .catch(err => {
+        console.log(err);
+        res.status(500).json({
           message: 'Error when update score.',
           error: err
-        }))
+        })
+      })
   }
 
 

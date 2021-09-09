@@ -108,8 +108,10 @@ module.exports = {
         let name = req.body.nombre;
         let des = req.body.descripcion;
         let pre = req.body.precio;
+        let ima = req.body.imagen;
+        
         models.curso.create({
-            nombre: name, precio :pre, descripcion:des
+            nombre: name, precio :pre, descripcion:des,linkImagen:ima
         })  
         .then(()=>{          
           res.send("curso guardado")
